@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Weekly11152021 {
@@ -50,21 +51,22 @@ public class Weekly11152021 {
 
 	private static int isConsecutive(String str) {
 		int start, length = str.length();
-		
-		for (int i=0; i<length/2; i++) {
-			String new_str = str.substring(0, i+1);
+
+		for (int i = 0; i < length / 2; i++) {
+			String new_str = str.substring(0, i + 1);
 			int num = Integer.parseInt(new_str);
 			start = num;
-			
+
 			while (new_str.length() < length) {
 				num++;
 				new_str = new_str + String.valueOf(num);
 			}
-			if (new_str.equals(str)) return start;
+			if (new_str.equals(str))
+				return start;
 		}
 		return -1;
 	}
-	
+
 	private static void AscendingNumbers() {
 		System.out.println("Input string");
 		in = new Scanner(System.in);
@@ -73,10 +75,26 @@ public class Weekly11152021 {
 		int start = isConsecutive(str);
 		System.out.println((start != -1) ? "Yes" : "No");
 	}
-	
+
 	private static void IntegerSquare() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("How big a square?");
+		int n = in.nextInt();
+		int[][] intarr = SquareArr(n);
+		for (int i = 0; i < n; i++) {
+			System.out.println(Arrays.toString(intarr[i]));
+		}
+	}
+
+	private static int[][] SquareArr(int n) {
+		int[][] intarr = new int[n][n];
+		if (n != 0) {
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					intarr[i][j] = n;
+				}
+			}
+		}
+		return intarr;
 	}
 
 }
